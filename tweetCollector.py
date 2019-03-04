@@ -3,7 +3,6 @@ from tweepy import Stream
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 
-from __future__ import print_function
 from pyspark.streaming import StreamingContext
 from pyspark.streaming.kafka import KafkaUtils
 from kafka import KafkaProducer
@@ -17,7 +16,7 @@ class KafkaProducerWrapper(object):
     def getProducer(brokerList):
         if KafkaProducerWrapper.producer == None:
             KafkaProducerWrapper.producer = KafkaProducer(
-                bootstrap_servers=brokerList, key_serializer=str.encode, value_serializer=str.encode)
+                bootstrap_servers=brokerList, value_serializer=str.encode)
         return KafkaProducerWrapper.producer
 
 
